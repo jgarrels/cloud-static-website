@@ -11,6 +11,7 @@ Azure: coming soon
 
 GCP: coming soon
 
+
 ## Project presentation
 [Here](./project-presentation.pptx) you can find the project presentation containing information about the project and its deployment.
 
