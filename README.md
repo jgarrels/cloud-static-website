@@ -10,4 +10,4 @@ links coming soon
 ## Project presentation
 [Here](./project-presentation.pptx) you can find the project presentation containing information about the project and its deployment.
 
-
+This is the architecture diagram for AWS: <img src="img/aws-architecture-diagram.jpeg" width=50% height=50%>
