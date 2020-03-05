@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="utf-8">
         <title>
@@ -7,6 +8,7 @@
         </title>
         <link rel="stylesheet" href="../css/style.css">
     </head>
+
     <body>
         <header>
             <h1>
@@ -16,8 +18,8 @@
         <div>
             <p>
                 This tutorial will focus on deploying a static website
-                with AWS Simple Storage Service (S3), using the AWS 
-                CLI. The same result can also be achieved with the 
+                with AWS Simple Storage Service (S3), using the AWS
+                CLI. The same result can also be achieved with the
                 AWS Console.
             </p>
         </div>
@@ -28,7 +30,7 @@
             <ul>
                 <li>An AWS account.</li>
                 <li>The AWS CLI installed on your local machine.</li>
-                <li>A website or template you would like to deploy.</li>           
+                <li>A website or template you would like to deploy.</li>
             </ul>
         </div>
         <div>
@@ -41,35 +43,39 @@
                 <code>region=us-east-1</code>
             </p>
             <p>
-                You can test if everything is working fine with the command 
+                You can test if everything is working fine with the command
                 <code>aws s3 ls</code> - if everything is configured correctly,
-                this should display your existing buckets in that region or 
-                nothing if you have no buckets there. Otherwise there will be 
+                this should display your existing buckets in that region or
+                nothing if you have no buckets there. Otherwise there will be
                 an error.
             </p>
             <p>Now let's get going and create the S3 bucket for our website.
                 We'll be using the command <code>aws s3 mb s3://my-bucket</code>.
             </p>
             <p>
-                Here, <code>mb</code> is short for "make bucket" and the bucket 
-                name "my-bucket" is the name of the bucket that will be created. 
+                Here, <code>mb</code> is short for "make bucket" and the bucket
+                name "my-bucket" is the name of the bucket that will be created.
                 Two caveats here:
                 <ul>
                     <li>
-                        Bucket names need to be unique across all of AWS - 
-                        you might run into an error if you try to create a bucket 
+                        Bucket names need to be unique across all of AWS -
+                        you might run into an error if you try to create a bucket
                         whose name is already being used.
                     </li>
                     <li>
-                        The bucket name will be included in the default web 
-                        address AWS provides for your bucket. This will later 
-                        be the default address for our website. Make sure to 
+                        The bucket name will be included in the default web
+                        address AWS provides for your bucket. This will later
+                        be the default address for our website. Make sure to
                         choose something that matches the content of your website.
                     </li>
                 </ul>
-                You can find more information about S3 bucket names 
-                <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html" 
-                target="_blank">here</a>.
+                You can find more information about S3 bucket names
+                <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html"
+                    target="_blank">here</a>.
+            </p>
+            <p>
+                To verify that your bucket was created successfully, you can use 
+                <code>aws s3 ls</code> again - the bucket should now appear in the list.
             </p>
         </div>
         <div>
@@ -79,4 +85,5 @@
             <h2>Syncing your website files to your S3 bucket</h2>
         </div>
     </body>
+
 </html>
