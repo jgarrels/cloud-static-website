@@ -33,6 +33,20 @@
         </div>
         <div>
             <h2>Getting started with an S3 bucket</h2>
+            <p>
+                Before creating the S3 bucket, please make sure your region is set
+                in <code>~/.aws/credentials</code>: In our example, this is
+            </p>
+            <p>
+                <code>region=us-east-1</code>
+            </p>
+            <p>
+                You can test if everything is working fine with the command 
+                <code>aws s3 ls</code> - if everything is configured correctly,
+                this should display your existing buckets in that region or 
+                nothing if you have no buckets there. Otherwise there will be 
+                an error.
+            </p>
         </div>
         <div>
             <h2>Enabling static website hosting</h2>
