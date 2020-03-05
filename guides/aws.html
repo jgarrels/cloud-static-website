@@ -86,7 +86,7 @@
                 like them to stay in sync when we change something in the files.
                 In order to achieve this, we will use the <code>sync</code> command.
             </p>
-            <code>aws s3 sync local-path s3-uri</code>
+            <code>aws s3 sync local-path s3-uri --acl "public-read"</code>
             <p>
                 Let's break this command down:
                 <ul>
@@ -107,6 +107,14 @@
                         The bucket URI <code>s3-uri</code> is just what you typed in
                         when creating the bucket: <code>s3://my-bucket</code> (again:
                         replace <code>my-bucket</code> with your actual bucket name).
+                    </li>
+                    <li>
+                        <code>
+                            --acl "public-read"
+                        </code>
+                        configures the access policy to our bucket files - in this case, 
+                        <code>public-read</code> which means everybody will be able to 
+                        see our website, but only we can change it.
                     </li>
                 </ul>
             </p>
