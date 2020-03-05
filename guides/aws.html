@@ -74,16 +74,16 @@
                     target="_blank">here</a>.
             </p>
             <p>
-                To verify that your bucket was created successfully, you can use 
+                To verify that your bucket was created successfully, you can use
                 <code>aws s3 ls</code> again - the bucket should now appear in the list.
             </p>
         </div>
-        
+
         <div>
             <h2>Syncing your website files to your S3 bucket</h2>
             <p>
-                Now we'd like to upload our website files to the S3 bucket, and we'd 
-                like them to stay in sync when we change something in the files. 
+                Now we'd like to upload our website files to the S3 bucket, and we'd
+                like them to stay in sync when we change something in the files.
                 In order to achieve this, we will use the <code>sync</code> command.
             </p>
             <code>aws s3 sync local-path s3-uri</code>
@@ -91,29 +91,29 @@
                 Let's break this command down:
                 <ul>
                     <li>
-                        The <code>sync</code> command will sync our local files with 
+                        The <code>sync</code> command will sync our local files with
                         the S3 bucket (creating new files, updating existing files).
                     </li>
                     <li>
-                        <code>local-path</code> needs to be replaced with the path to your 
+                        <code>local-path</code> needs to be replaced with the path to your
                         website files on your machine or on a GitHub repository.
-                        If you are in the working directory containing your website 
-                        files, this will just be <code>.</code> (a single dot 
-                        - represents the current directory). You can see your current 
-                        working directory in your terminal by running the command 
+                        If you are in the working directory containing your website
+                        files, this will just be <code>.</code> (a single dot
+                        - represents the current directory). You can see your current
+                        working directory in your terminal by running the command
                         <code>pwd</code>.
                     </li>
                     <li>
-                        The bucket URI <code>s3-uri</code> is just what you typed in 
+                        The bucket URI <code>s3-uri</code> is just what you typed in
                         when creating the bucket: <code>s3://my-bucket</code> (again:
                         replace <code>my-bucket</code> with your actual bucket name).
                     </li>
                 </ul>
             </p>
             <p>
-                If you want to exclude some files, you can use the 
-                <code>--exclude string</code> flag 
-                at the end of your command. An example: I did not want to upload my git 
+                If you want to exclude some files, you can use the
+                <code>--exclude string</code> flag
+                at the end of your command. An example: I did not want to upload my git
                 repository files to the S3 bucket, so my command looked like this:
             </p>
             <code>
@@ -125,21 +125,51 @@
                 of the .git folder.
             </p>
             <p>
-                If you have deleted some files locally and want to reflect that on your 
-                website/S3 bucket, include <code>--delete</code> to allow S3 to delete 
+                If you have deleted some files locally and want to reflect that on your
+                website/S3 bucket, include <code>--delete</code> to allow S3 to delete
                 files that do not exist on your local repository anymore.
             </p>
             <h3>
                 Congratulations!
             </h3>
             <p>
-                You have now uploaded your files to your S3 bucket. In the next step, 
-                we will enable static website hosting for the bucket so our website 
+                You have now uploaded your files to your S3 bucket. In the next step,
+                we will enable static website hosting for the bucket so our website
                 will finally be accessible.
             </p>
         </div>
         <div>
             <h2>Enabling static website hosting</h2>
+            <p>
+                This is the last step to get our website running. We will
+                use the <code>website</code> command to enable static website
+                hosting for the S3 bucket with our website files. The code for it
+                looks like this:
+            </p>
+            <code>aws s3 website s3://my-bucket/ 
+                --index-document index.html --error-document error.html</code>
+            <p>
+                Let's break this down step by step.
+                <ul>
+                    <li>
+                        <code>s3://my-bucket</code> is the S3 URI as explained in
+                        the last step. You will need to replace <code>my-bucket</code>
+                        with the name of the bucket you created.
+                    </li>
+                    <li>
+                        The index document is the document that contains your landing 
+                        page (home page, start page - whatever it is in your case). 
+                        If yours has a different name, just replace 
+                        <code>index.html</code> in the command with the correct name.
+                    </li>
+                    <li>
+                        The error document is optional, but can be helpful. Whenever 
+                        someone calls your website with a link that does not exist,
+                        S3 will redirect them to this page. A suitable choice would 
+                        be something with a 404 not found message.
+                    </li>
+                </ul>
+            </p>
         </div>
     </body>
 
